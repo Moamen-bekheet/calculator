@@ -32,3 +32,4 @@ function operate(operator, numOne, numTwo){
     }
 }
 
+const display = document.querySelector('#screen');
