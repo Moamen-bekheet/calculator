@@ -31,3 +31,4 @@ function operate(operator, numOne, numTwo){
         //should give out an error
     }
 }
+
