@@ -31,6 +31,16 @@ function operate(operator, numOne, numTwo){
         //should give out an error
     }
 }
+function updateOperandsAndDisplay(buttonNumber){
+    if(operator===''){
+        display.textContent +=`${buttonNumber}`;
+        firstOperand = display.textContent;
+    }
+    if(operator !== ''){
+        secondOperand += `${buttonNumber}`;
+        display.textContent = secondOperand;
+    }
+}
 let firstOperand = '';
 let secondOperand = '';
 let operator = '';
@@ -53,41 +63,34 @@ const addBtn = document.querySelector('#addition');
 const subBtn = document.querySelector('#subtraction');
 const eqBtn = document.querySelector('#equals');
 zeroBtn.addEventListener('click', function(){
-    display.textContent +='0';
+    updateOperandsAndDisplay(0);
 })
 oneBtn.addEventListener('click', function(){
-    display.textContent +='1';
+    updateOperandsAndDisplay(1);
 });
 twoBtn.addEventListener('click', function(){
-    display.textContent +='2';
+    updateOperandsAndDisplay(2);
 });
 threeBtn.addEventListener('click', function(){
-    if(operator===''){
-        display.textContent +='3';
-        firstOperand = display.textContent;
-    }
-    if(operator !== ''){
-        secondOperand += "3";
-        display.textContent = secondOperand;
-    }
+    updateOperandsAndDisplay(3);
 });
 fourBtn.addEventListener('click', function(){
-    display.textContent +='4';
+    updateOperandsAndDisplay(4);
 });
 fiveBtn.addEventListener('click', function(){
-    display.textContent +='5';
+    updateOperandsAndDisplay(5);
 });
 sixBtn.addEventListener('click', function(){
-    display.textContent +='6';
+    updateOperandsAndDisplay(6);
 });
 sevenBtn.addEventListener('click', function(){
-    display.textContent +='7';
+    updateOperandsAndDisplay(7);
 });
 eightBtn.addEventListener('click', function(){
-    display.textContent +='8';
+    updateOperandsAndDisplay(8);
 });
 nineBtn.addEventListener('click', function(){
-    display.textContent +='9';
+    updateOperandsAndDisplay(9);
 });
 delBtn.addEventListener('click',function(){
     display.textContent = display.textContent.slice(0,display.textContent.length-1);
@@ -106,7 +109,7 @@ multBtn.addEventListener('click', function(){
         operator = '×';
     }
     else if(secondOperand!==''){
-        firstOperand = operate('×',firstOperand,secondOperand);
+        firstOperand = operate('×',parseFloat(firstOperand),parseFloat(secondOperand));
         display.textContent = firstOperand;
     }
 })
