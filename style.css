@@ -10,7 +10,8 @@
 
 #screen{
     width: 250px;
-    height:25px;
+    height:50px;
+    direction: rtl;
     border: 2px solid black;
     border-radius: 7px;
     background-color: azure;
