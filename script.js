@@ -31,7 +31,9 @@ function operate(operator, numOne, numTwo){
         //should give out an error
     }
 }
-let firstOperand,secondOperand, operator;
+let firstOperand = '';
+let secondOperand = '';
+let operator = '';
 const display = document.querySelector('#screen');
 const zeroBtn = document.querySelector('#zero')
 const oneBtn = document.querySelector('#one');
@@ -45,10 +47,13 @@ const eightBtn = document.querySelector('#eight');
 const nineBtn = document.querySelector('#nine');
 const delBtn = document.querySelector('#del');
 const acBtn = document.querySelector('#ac');
-const multBtn = document.querySelector('#multiplicatoin')
-const eqBtn = document.querySelector('#equals')
-zeroBtn.addEventListener('click', function{
-    display.textContent +=0;
+const multBtn = document.querySelector('#multiplicatoin');
+const divBtn = document.querySelector('#division');
+const addBtn = document.querySelector('#addition');
+const subBtn = document.querySelector('#subtraction');
+const eqBtn = document.querySelector('#equals');
+zeroBtn.addEventListener('click', function(){
+    display.textContent +='0';
 })
 oneBtn.addEventListener('click', function(){
     display.textContent +='1';
@@ -57,7 +62,14 @@ twoBtn.addEventListener('click', function(){
     display.textContent +='2';
 });
 threeBtn.addEventListener('click', function(){
-    display.textContent +='3';
+    if(operator===''){
+        display.textContent +='3';
+        firstOperand = display.textContent;
+    }
+    if(operator !== ''){
+        secondOperand += "3";
+        display.textContent = secondOperand;
+    }
 });
 fourBtn.addEventListener('click', function(){
     display.textContent +='4';
@@ -82,4 +94,19 @@ delBtn.addEventListener('click',function(){
 })
 acBtn.addEventListener('click',function(){
     display.textContent = '';
+    firstOperand='';
+    operator='';
+    secondOperand='';
+})
+multBtn.addEventListener('click', function(){
+    if(firstOperand===''){
+        return;
+    }
+    else if (operator===''){
+        operator = '×';
+    }
+    else if(secondOperand!==''){
+        firstOperand = operate('×',firstOperand,secondOperand);
+        display.textContent = firstOperand;
+    }
 })
