@@ -33,6 +33,7 @@ function operate(operator, numOne, numTwo){
 }
 let firstOperand,secondOperand, operator;
 const display = document.querySelector('#screen');
+const zeroBtn = document.querySelector('#zero')
 const oneBtn = document.querySelector('#one');
 const twoBtn = document.querySelector('#two');
 const threeBtn = document.querySelector('#three');
@@ -46,6 +47,9 @@ const delBtn = document.querySelector('#del');
 const acBtn = document.querySelector('#ac');
 const multBtn = document.querySelector('#multiplicatoin')
 const eqBtn = document.querySelector('#equals')
+zeroBtn.addEventListener('click', function{
+    display.textContent +=0;
+})
 oneBtn.addEventListener('click', function(){
     display.textContent +='1';
 });
