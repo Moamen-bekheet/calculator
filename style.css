@@ -1,8 +1,15 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:900px;
+}
 #calculator-frame{
     display: flex;
     flex-direction: column;
     border: 1px solid black;
     width:fit-content;
+    height: fit-content;
     padding: 10px 5px;
     border-radius: 7px;
     background-color: #222;
