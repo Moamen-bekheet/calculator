@@ -24,11 +24,8 @@ function operate(operator, numOne, numTwo){
     else if(operator.trim()==='-'){
         return subtract(numOne,numTwo);
     }
-    else if(operator.trim()==='÷'){
-        return divide(numOne,numTwo);
-    }
     else{
-        //should give out an error
+        return divide(numOne,numTwo);
     }
 }
 function updateOperandsAndDisplay(buttonNumber){
@@ -44,6 +41,7 @@ function updateOperandsAndDisplay(buttonNumber){
 let firstOperand = '';
 let secondOperand = '';
 let operator = '';
+let result = '';
 const display = document.querySelector('#screen');
 const zeroBtn = document.querySelector('#zero')
 const oneBtn = document.querySelector('#one');
@@ -105,11 +103,13 @@ multBtn.addEventListener('click', function(){
     if(firstOperand===''){
         return;
     }
-    else if (operator===''){
+    else if (operator!=='×'){
         operator = '×';
     }
     else if(secondOperand!==''){
-        firstOperand = operate('×',parseFloat(firstOperand),parseFloat(secondOperand));
-        display.textContent = firstOperand;
+        result = operate('×',parseFloat(firstOperand),parseFloat(secondOperand));
+        display.textContent = result;
+        secondOperand = '';
+        firstOperand = result;
     }
 })
