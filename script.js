@@ -24,7 +24,7 @@ function operate(operator, numOne, numTwo){
     else if(operator.trim()==='-'){
         return subtract(numOne,numTwo);
     }
-    else{
+    else if(operator.trim()==='÷'){
         return divide(numOne,numTwo);
     }
 }
@@ -36,6 +36,20 @@ function updateOperandsAndDisplay(buttonNumber){
     if(operator !== ''){
         secondOperand += `${buttonNumber}`;
         display.textContent = secondOperand;
+    }
+}
+function doOperation(operatorArg){
+    if(firstOperand===''){
+        return;
+    }
+    else if (operator!==operatorArg){
+        operator = operatorArg;
+    }
+    else if(secondOperand!==''){
+        result = operate(operator,parseFloat(firstOperand),parseFloat(secondOperand));
+        display.textContent = result;
+        secondOperand = '';
+        firstOperand = result;
     }
 }
 let firstOperand = '';
@@ -53,6 +67,7 @@ const sixBtn = document.querySelector('#six');
 const sevenBtn = document.querySelector('#seven');
 const eightBtn = document.querySelector('#eight');
 const nineBtn = document.querySelector('#nine');
+const pointBtn = document.querySelector('#point')
 const delBtn = document.querySelector('#del');
 const acBtn = document.querySelector('#ac');
 const multBtn = document.querySelector('#multiplicatoin');
@@ -90,24 +105,39 @@ eightBtn.addEventListener('click', function(){
 nineBtn.addEventListener('click', function(){
     updateOperandsAndDisplay(9);
 });
-delBtn.addEventListener('click',function(){
-    display.textContent = display.textContent.slice(0,display.textContent.length-1);
+pointBtn.addEventListener('click',function(){
+    if(display.textContent.includes('.')){
+        return
+    }
+    updateOperandsAndDisplay('.');
 })
+delBtn.addEventListener('click',function(){
+    updateOperandsAndDisplay(display.textContent.slice(0,display.textContent.length-1));
+});
 acBtn.addEventListener('click',function(){
     display.textContent = '';
     firstOperand='';
     operator='';
     secondOperand='';
-})
+});
 multBtn.addEventListener('click', function(){
+    doOperation('×');
+});
+addBtn.addEventListener('click',function(){
+    doOperation('+');
+});
+subBtn.addEventListener('click',function(){
+    doOperation('-');
+});
+divBtn.addEventListener('click',function(){
+    doOperation('÷');
+});
+eqBtn.addEventListener('click',function(){
     if(firstOperand===''){
         return;
     }
-    else if (operator!=='×'){
-        operator = '×';
-    }
-    else if(secondOperand!==''){
-        result = operate('×',parseFloat(firstOperand),parseFloat(secondOperand));
+    else if(secondOperand!==''&&operator!==''){
+        result = operate(operator,parseFloat(firstOperand),parseFloat(secondOperand));
         display.textContent = result;
         secondOperand = '';
         firstOperand = result;
